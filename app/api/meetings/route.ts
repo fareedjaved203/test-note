@@ -41,7 +41,7 @@ async function getRecallTranscript(botId: string) {
     r.media_shortcuts?.transcript
   );
   
-  console.log("data recordings: ", data.recordings);
+  console.log("data recordings: ", data.recordings); 
   console.log('Completed recording:', completedRecording);
   
   if (completedRecording?.media_shortcuts?.transcript?.data.download_url) {
