@@ -7,7 +7,6 @@ const MeetingSchema = new mongoose.Schema({
   botId: { type: String },
   transcript: { type: String },
   summary: { type: String },
-  notes: { type: String },
   createdAt: { type: Date, default: Date.now }
 });
 

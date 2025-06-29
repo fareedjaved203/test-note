@@ -1,4 +1,4 @@
-export async function startRecallBot(meetingUrl: string, meetingId: string) {
+export async function startRecallBot(meetingUrl: string) {
   const response = await fetch('https://us-west-2.recall.ai/api/v1/bot/', {
     method: 'POST',
     headers: {
@@ -7,7 +7,7 @@ export async function startRecallBot(meetingUrl: string, meetingId: string) {
     },
     body: JSON.stringify({
       meeting_url: meetingUrl,
-      bot_name: 'NoteTaker',
+      bot_name: '1on1 Note Taker',
       recording_config: {
         transcript: {
           provider: {
