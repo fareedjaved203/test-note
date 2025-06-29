@@ -1,7 +1,27 @@
 import InsightCard from './InsightCard';
 
+interface ActionItem {
+  who: string;
+  what: string;
+  when?: string;
+}
+
+interface Deadline {
+  task: string;
+  date: string;
+}
+
+interface Insights {
+  summary: string;
+  actionItems?: ActionItem[];
+  keyDecisions?: string[];
+  nextSteps?: string[];
+  deadlines?: Deadline[];
+  questions?: string[];
+}
+
 interface InsightsDisplayProps {
-  insights: any;
+  insights: Insights;
 }
 
 export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
@@ -18,7 +38,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
       </InsightCard>
       
       <div className="grid gap-6 md:grid-cols-2">
-        {insights.actionItems?.length > 0 && (
+        {insights.actionItems && insights.actionItems.length > 0 && (
           <InsightCard
             title="Action Items"
             icon="✅"
@@ -26,7 +46,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
             bgColor="bg-green-100"
           >
             <div className="space-y-3 pr-2">
-              {insights.actionItems.map((item: any, i: number) => (
+              {insights.actionItems!.map((item, i: number) => (
                 <div key={i} className="bg-green-50 p-3 my-5 rounded-lg">
                   <div className="font-semibold text-green-800">{item.who}</div>
                   <div className="text-gray-700">{item.what}</div>
@@ -37,7 +57,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
           </InsightCard>
         )}
         
-        {insights.keyDecisions?.length > 0 && (
+        {insights.keyDecisions && insights.keyDecisions.length > 0 && (
           <InsightCard
             title="Key Decisions"
             icon="⚡"
@@ -45,7 +65,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
             bgColor="bg-yellow-100"
           >
             <div className="space-y-2 pr-2">
-              {insights.keyDecisions.map((decision: string, i: number) => (
+              {insights.keyDecisions!.map((decision: string, i: number) => (
                 <div key={i} className="flex items-start space-x-2 my-3">
                   <span className="text-yellow-500 mt-1">•</span>
                   <span className="text-gray-700">{decision}</span>
@@ -55,7 +75,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
           </InsightCard>
         )}
         
-        {insights.nextSteps?.length > 0 && (
+        {insights.nextSteps && insights.nextSteps.length > 0 && (
           <InsightCard
             title="Next Steps"
             icon="🚀"
@@ -63,7 +83,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
             bgColor="bg-purple-100"
           >
             <div className="space-y-2 pr-2">
-              {insights.nextSteps.map((step: string, i: number) => (
+              {insights.nextSteps!.map((step: string, i: number) => (
                 <div key={i} className="flex items-start space-x-2 my-3">
                   <span className="text-purple-500 mt-1">•</span>
                   <span className="text-gray-700">{step}</span>
@@ -73,7 +93,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
           </InsightCard>
         )}
         
-        {insights.deadlines?.length > 0 && (
+        {insights.deadlines && insights.deadlines.length > 0 && (
           <InsightCard
             title="Important Deadlines"
             icon="⏰"
@@ -81,7 +101,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
             bgColor="bg-red-100"
           >
             <div className="space-y-3 pr-2">
-              {insights.deadlines.map((deadline: any, i: number) => (
+              {insights.deadlines!.map((deadline, i: number) => (
                 <div key={i} className="bg-red-50 p-3 rounded-lg">
                   <div className="font-semibold text-red-800">{deadline.task}</div>
                   <div className="text-red-600 text-sm">{deadline.date}</div>
@@ -91,7 +111,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
           </InsightCard>
         )}
         
-        {insights.questions?.length > 0 && (
+        {insights.questions && insights.questions.length > 0 && (
           <InsightCard
             title="Questions/Issues"
             icon="❓"
@@ -99,7 +119,7 @@ export default function InsightsDisplay({ insights }: InsightsDisplayProps) {
             bgColor="bg-orange-100"
           >
             <div className="space-y-2 pr-2">
-              {insights.questions.map((question: string, i: number) => (
+              {insights.questions!.map((question: string, i: number) => (
                 <div key={i} className="flex items-start space-x-2 my-3">
                   <span className="text-orange-500 mt-1">•</span>
                   <span className="text-gray-700">{question}</span>
