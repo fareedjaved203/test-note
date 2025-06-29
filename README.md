@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 1on1 - AI-Powered Meeting Note Taker
 
-## Getting Started
+An intelligent meeting assistant that automatically joins your video calls, records conversations, and generates structured insights using AI. The system integrates with Recall.ai for meeting recording and Google's Gemini AI for generating comprehensive meeting summaries, action items, key decisions, next steps, deadlines, and unresolved questions.
 
-First, run the development server:
+![System Flow](public/system_flow.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Automatic Meeting Recording**: Bot joins Google Meet, Zoom, or Teams calls
+- **AI-Generated Insights**: Structured summaries with action items, decisions, and next steps
+- **Real-time Processing**: Automatic transcript processing and insight generation
+- **Modern UI**: Clean, responsive interface with organized insight cards
+- **Polling System**: Real-time updates on meeting status and completion
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Run Locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- Node.js 18+ installed
+- MongoDB database (local or cloud)
+- Recall.ai API key
+- Google Gemini API key
 
-## Learn More
+### Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone and install dependencies**
+   ```bash
+   git clone <repository-url>
+   cd note-taker
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Environment Configuration**
+   Create `.env.local` file with:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   RECALL_API_KEY=your_recall_api_key
+   GEMINI_API_KEY=your_gemini_api_key
+   NEXT_PUBLIC_BASE_URL=http://localhost:3000
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Start the application**
+   ```bash
+   npm run dev
+   ```
 
-## Deploy on Vercel
+4. **Access the application**
+   Open [http://localhost:3000](http://localhost:3000) in your browser
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Usage
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Enter your meeting URL (Google Meet, Zoom, or Teams)
+2. Click "Start Meeting" to deploy the recording bot
+3. The bot will join your meeting and record the conversation
+4. After the meeting ends, AI will automatically generate structured insights
+5. View organized summaries, action items, decisions, and next steps
+
+## Tech Stack
+
+- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes, MongoDB, Mongoose
+- **AI Services**: Google Gemini AI, Recall.ai
+- **Architecture**: Component-based UI, Controller-Service pattern
